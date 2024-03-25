@@ -1,11 +1,15 @@
 package glogger
 
-import "fmt"
+import "log/slog"
 
 type GLogger struct {
 	test string
 }
 
-func (l *GLogger) print() {
-	fmt.Println("hello from GLogger")
+func New(test string) *GLogger {
+	return &GLogger{test: test}
+}
+
+func (l *GLogger) Print() {
+	slog.Info("hello from:", "v", l.test)
 }
